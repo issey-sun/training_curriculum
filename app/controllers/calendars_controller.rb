@@ -12,6 +12,7 @@ class CalendarsController < ApplicationController
     Plan.create(plan_params)
     redirect_to action: :index
   end
+  #calendersというキーに紐づくバリューがない。テーブルが存在しない。
 
   private
 
