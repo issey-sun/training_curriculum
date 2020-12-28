@@ -3,7 +3,7 @@ class CalendarsController < ApplicationController
   # １週間のカレンダーと予定が表示されるページ
   def index
     get_Week
-    #Issue2を解消。変更内容は表記をスネークケースに変更。メソッドなのでスネークケースを使用。
+    #Issue2を解消。変更内容は表記をスネークケースに変更。メソッドなので、スネークケースを使用。
     @plan = Plan.new
   end
 
