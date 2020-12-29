@@ -12,7 +12,8 @@
     <% @week_days.each do |day| %>
       <div class='item'>
         <div class='date'>
-          <% day[:month] %>/<% day[:date] %>
+          <%= day[:month] %>/<%= day[:date] %>
+         <%# Issue5 =を加える変更を行った。if文、each文との表示の使い分け %>
         </div>
         <ul class='content'>
         <% if day[:plans].length != 0 %>
