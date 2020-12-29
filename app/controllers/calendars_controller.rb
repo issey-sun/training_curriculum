@@ -3,7 +3,7 @@ class CalendarsController < ApplicationController
   # １週間のカレンダーと予定が表示されるページ
   def index
     get_Week
-    #Issue2を解消。変更内容は表記をスネークケースに変更。メソッドなので、スネークケースを使用。
+    #Issue2を解消。変更内容は表記をスネークケースに変更。メソッドなので、スネークケースを使用した。
     @plan = Plan.new
   end
 
@@ -21,7 +21,7 @@ class CalendarsController < ApplicationController
   end
 
   def get_Week
-    #Issue2を解消。変更内容は表記をスネークケースに変更。def index内に順応して同様の表記に変更。
+    #Issue2を解消。変更内容は表記をスネークケースに変更。def index内に順応して同様の表記に変更した。
     wdays = ['(日)','(月)','(火)','(水)','(木)','(金)','(土)']
 
     # Dateオブジェクトは、日付を保持しています。下記のように`.today.day`とすると、今日の日付を取得できます。
@@ -38,7 +38,7 @@ class CalendarsController < ApplicationController
         today_plans.push(plan.plan) if plan.date == @todays_date + x
       end
       days = { month: (@todays_date + x).month, date: (@todays_date+x).day, plans: today_plans}
-      # Issue1を解消。変更内容はハッシュロケット→シンボル型とし、よりシンプルな記述に変更
+      #Issue1を解消。変更内容はハッシュロケット→シンボル型とし、よりシンプルな記述に変更。
       @week_days.push(days)
     end
 
