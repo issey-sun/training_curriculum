@@ -4,7 +4,6 @@ class CreatePlans < ActiveRecord::Migration[6.0]
       t.string :plan
       t.date :date
       t.timestamps
-      t.calendars :calenders
     end
   end
 end

@@ -2,8 +2,7 @@ class CalendarsController < ApplicationController
 
   # １週間のカレンダーと予定が表示されるページ
   def index
-    get_Week
-    #Issue2を解消。変更内容は表記をスネークケースに変更。メソッドなのでスネークケースを使用。
+    getWeek
     @plan = Plan.new
   end
 
@@ -12,7 +11,6 @@ class CalendarsController < ApplicationController
     Plan.create(plan_params)
     redirect_to action: :index
   end
-  #calendersというキーに紐づくバリューがない。テーブルが存在しない。
 
   private
 
@@ -20,13 +18,12 @@ class CalendarsController < ApplicationController
     params.require(:calendars).permit(:date, :plan)
   end
 
-  def get_Week
-    #Issue2を解消。変更内容は表記をスネークケースに変更。def index内に順応して同様の表記に変更。
+  def getWeek
     wdays = ['(日)','(月)','(火)','(水)','(木)','(金)','(土)']
 
     # Dateオブジェクトは、日付を保持しています。下記のように`.today.day`とすると、今日の日付を取得できます。
     @todays_date = Date.today
-    # 例)今日が2月1日の場合・・・ Date.today.day => 1日
+    # 例)　今日が2月1日の場合・・・ Date.today.day => 1日
 
     @week_days = []
 
@@ -37,8 +34,7 @@ class CalendarsController < ApplicationController
       plans.each do |plan|
         today_plans.push(plan.plan) if plan.date == @todays_date + x
       end
-      days = { month: (@todays_date + x).month, date: (@todays_date+x).day, plans: today_plans}
-      # Issue1を解消。変更内容はハッシュロケット→シンボル型とし、よりシンプルな記述に変更
+      days = { :month => (@todays_date + x).month, :date => (@todays_date+x).day, :plans => today_plans}
       @week_days.push(days)
     end
 
